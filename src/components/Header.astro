@@ -1,0 +1,27 @@
+---
+import Logo from '@components/Logo.astro';
+import { isDarkThemeDefault } from "@src/constants";
+
+const sunIconSwap = isDarkThemeDefault ? 'swap-off' : 'swap-on';
+const moonIconSwap = isDarkThemeDefault ? 'swap-on' : 'swap-off';
+---
+
+<header class="sticky top-0 z-10">
+  <nav class="card navbar rounded-t-none flex-row bg-base-300/40 backdrop-blur-md px-4">
+    <div class="flex-1 flex items-center gap-2">
+      <Logo class="h-8 text-primary" />
+    </div>
+    <div class="flex gap-2">
+      <label id="theme-button" role="button" class="btn btn-circle btn-soft swap swap-rotate">
+        <input id="theme-checkbox" type="checkbox" class="theme-controller" aria-label="Cambiar tema" />
+        <svg class={sunIconSwap} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 12m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" />
+          <path d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7" />
+        </svg>
+        <svg class={moonIconSwap} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+        </svg>
+      </label>
+    </div>
+  </nav>
+</header>
