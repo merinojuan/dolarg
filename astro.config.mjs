@@ -10,7 +10,7 @@ export default defineConfig({
   devToolbar: {
     enabled: false
   },
-  server: { port: 4323 },
+  server: { port: 3000 },
   site: 'https://dolarg.duckdns.org',
   base: '/',
   vite: {
