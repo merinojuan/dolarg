@@ -6,10 +6,25 @@ const sunIconSwap = isDarkThemeDefault ? 'swap-off' : 'swap-on';
 const moonIconSwap = isDarkThemeDefault ? 'swap-on' : 'swap-off';
 ---
 
+<section
+  id="install-container"
+  class="flex items-center justify-between gap-4 p-4 bg-gradient-to-r from-primary/80 from-10% via-primary via-30% to-primary/70 to-90% backdrop-blur-md"
+  hidden
+>
+  <div class="grow">
+    <small class="text-black">¡Instala la aplicación en tu dispositivo!</small>
+  </div>
+  <div>
+    <button id="install-button" class="btn gap-4">
+      <Logo class="h-5 w-5" />
+      Instalar
+    </button>
+  </div>
+</section>
 <header class="sticky top-0 z-10">
   <nav class="card navbar rounded-t-none flex-row bg-base-300/40 backdrop-blur-md px-4">
     <div class="flex-1 flex items-center gap-2">
-      <Logo class="h-8 text-primary" />
+      <Logo class="h-8 w-8 text-primary" />
     </div>
     <div class="flex gap-2">
       <label id="theme-button" role="button" class="btn btn-circle btn-soft swap swap-rotate">
@@ -25,3 +40,32 @@ const moonIconSwap = isDarkThemeDefault ? 'swap-on' : 'swap-off';
     </div>
   </nav>
 </header>
+
+<script is:inline>
+  let installPrompt = null;
+  const installContainer = document.querySelector("#install-container");
+  const installButton = document.querySelector("#install-button");
+
+  window.addEventListener("appinstalled", () => {
+    disableInAppInstallPrompt();
+  });
+
+  window.addEventListener("beforeinstallprompt", (event) => {
+    event.preventDefault();
+    installPrompt = event;
+    installContainer.removeAttribute("hidden");
+  });
+
+  installButton.addEventListener("click", async () => {
+    if (!installPrompt) {
+      return;
+    }
+    await installPrompt.prompt();
+    disableInAppInstallPrompt();
+  });
+
+  function disableInAppInstallPrompt() {
+    installPrompt = null;
+    installContainer.setAttribute("hidden", "");
+  }
+</script>
