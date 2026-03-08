@@ -11,8 +11,8 @@ export default defineConfig({
     enabled: false
   },
   server: { port: 4323 },
-  site: 'https://merinojuan.github.io',
-  base: '/dolarg',
+  site: 'https://dolarg.duckdns.org',
+  base: '/',
   vite: {
     // @ts-ignore
     plugins: [tailwindcss()]
@@ -20,12 +20,12 @@ export default defineConfig({
   integrations: [
     AstroPWA({
       mode: 'development',
-      base: '/dolarg/',
-      scope: '/dolarg/',
+      base: '/',
+      scope: '/',
       includeAssets: ['favicon.svg'],
       manifest: false,
       workbox: {
-        navigateFallback: '/dolarg',
+        navigateFallback: '/',
       },
       devOptions: {
         enabled: true,

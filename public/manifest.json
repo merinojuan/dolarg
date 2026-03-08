@@ -5,8 +5,8 @@
   "theme_color": "#1b1717",
   "background_color": "#1b1717",
   "display": "standalone",
-  "start_url": "/dolarg/?source=pwa",
-  "scope": "/dolarg/",
+  "start_url": "/",
+  "scope": "/",
   "icons": [
     {
       "src": "192.png",

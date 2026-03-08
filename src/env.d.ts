@@ -7,6 +7,7 @@ interface ImportMetaEnv {
   readonly PUBLIC_FIREBASE_MESSAGING_SENDER_ID: string;
   readonly PUBLIC_FIREBASE_APP_ID: string;
   readonly PUBLIC_FIREBASE_DOLARG_DOC_ID: string;
+  readonly PUBLIC_FIREBASE_DOLARG_OTHERS_DOC_ID: string;
   readonly PUBLIC_COMMANDER_DOLARG_URL: string;
   readonly PUBLIC_COMMANDER_API_KEY: string;
 }
