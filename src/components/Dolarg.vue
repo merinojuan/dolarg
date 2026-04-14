@@ -110,7 +110,11 @@
 														{{ item.name }}
 													</div>
 													<div class="stat-value text-2xl sm:text-3xl">
-														<span v-if="item.value !== null">{{ '$' + numFormatter(item.value) }}</span>
+														<span v-if="item.value !== null">
+															<span v-if="item.valueSymbol && item.valueSymbol === '$'">$</span>
+															{{ numFormatter(item.value) }}
+															<span v-if="item.valueSymbol && item.valueSymbol === '%'">%</span>
+														</span>
 														<span v-else>-</span>
 													</div>
 													<div class="stat-desc h-6 flex items-end">
@@ -137,7 +141,7 @@
 								<div class="flex items-center justify-between gap-4">
 									<div>
 										<h2 class="card-title">Última actualización</h2>
-										<p>{{ getStringDate(others.syncDate) }}</p>
+										<p>{{ getStringDate(others.lastSuccessSyncDate || others.syncDate) }}</p>
 									</div>
 									<div class="inline-grid *:[grid-area:1/1]">
 										<div class="status animate-ping" :class="{ 'status-error': others.syncError, 'status-success': !others.syncError }"></div>
