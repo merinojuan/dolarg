@@ -22,5 +22,5 @@
     "daisyui": "5.0.0",
     "workbox-window": "^7.3.0"
   },
-  "packageManager": "pnpm@11.4.0"
+  "packageManager": "pnpm@10.15.1"
 }
