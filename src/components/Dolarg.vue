@@ -1,5 +1,5 @@
 <template>
-	<div v-if="dolargPending || othersPending || initializing">
+	<div v-if="dolargPending || othersPending">
 		<div class="flex justify-center mt-4">
 			<div class="card skeleton rounded-full h-12 w-36"></div>
 		</div>
@@ -174,7 +174,7 @@ import { useDocument } from 'vuefire';
 import { doc } from 'firebase/firestore';
 import { db } from '@fb/client';
 
-const initializing = ref(true);
+// const initializing = ref(true);
 const isUpdatingData = ref(false);
 const viewSection = ref('dolarg');
 
@@ -190,9 +190,9 @@ const {
   error: othersError,
 } = useDocument(doc(db, 'dolarg', import.meta.env.PUBLIC_FIREBASE_DOLARG_OTHERS_DOC_ID));
 
-onMounted(() => {
-  setTimeout(() => (initializing.value = false), 1000);
-});
+// onMounted(() => {
+//   setTimeout(() => (initializing.value = false), 1000);
+// });
 
 watch(dolarg, (dolargData) => {
   if (dolargData && showUpdateButton(dolargData.syncDate)) updateData();
